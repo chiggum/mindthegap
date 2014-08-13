@@ -1,7 +1,7 @@
 mindthegap
 -----------------------------------------
 
-An open source tracing software made as a part of the google summer of code project: Real-time-vectorization-of-brain-atlases for International Neuroinformatics Coordinating Facility, mentored by Dr.Rembrandt Bakker and Dr.Piotr Majka.
+An open source tracing software made as a part of the Google Summer of Code 2014 project: Real-time-vectorization-of-brain-atlases for International Neuroinformatics Coordinating Facility, mentored by Dr.Rembrandt Bakker and Dr.Piotr Majka.
 
 Link to original repo: https://github.com/chiggum/Vectorization-of-brain-atlases
 
