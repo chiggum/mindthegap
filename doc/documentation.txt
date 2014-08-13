@@ -1,0 +1,247 @@
+/* 
+ * Popping Out Boundaries.
+ * 	Suppose the input image is:
+ * 		orig =
+ * 			1	1	2
+ * 			1	2	2
+ * 			3 	3	3
+ * 	where 1, 2 and 3 represents colors/pixels.
+ * 	Let the background color be 0.
+ * 
+ * 	Then the preprocessed image is:
+ * 		pre =
+ * 			0	0	0	0	0
+ * 			0	1	1	2	0
+ * 			0	1	2	2	0
+ * 			0	3	3	3	0
+ * 			0	0	0	0	0
+ * 
+ * 	popoutBoundaries() routine:
+ * 
+ * 		Let pop be our final popped out boundaries image.
+ * 		step 1: initializes pop with boundary pixels. After intialization,
+ * 			pop = 
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 				0	0	0	0	0	0	0	0	0	0
+ * 
+ * 		step 2: Assuming ZERO INDEXED rows and columns
+ * 			for i goes from 1st row to last row of pre
+ * 				focus_row := (2 * i + 1)th row
+ * 				for j goes from 1st col to last col of pre
+ * 					focus_col := (2 * j + 1)th col
+ * 
+ * 					pixel_in_pop_at(focus_row, focus_col) := pixel_in_pre_at(i,j) 
+ * 
+ * 					if(pixel_in_pre_at(i,j) == pixel_in_pre_at(i, j-1))
+ * 						pixel_in_pop_at(focus_row, focus_col-1) := pixel_in_pre_at(i,j-1)
+ * 					else
+ * 						pixel_in_pop_at(focus_row, focus_col-1) := boundary pixel
+ * 					endif
+ * 
+ * 					if(pixel_in_pre_at(i,j) == pixel_in_pre_at(i-1, j-1))
+ * 						pixel_in_pop_at(focus_row-1, focus_col-1) := pixel_in_pre_at(i-1,j-1)
+ * 					else
+ * 						pixel_in_pop_at(focus_row-1, focus_col-1) := boundary pixel
+ * 					endif
+ * 
+ * 					if(pixel_in_pre_at(i,j) == pixel_in_pre_at(i-1, j))
+ * 						pixel_in_pop_at(focus_row-1, focus_col) := pixel_in_pre_at(i-1,j)
+ * 					else
+ * 						pixel_in_pop_at(focus_row-1, focus_col) := boundary pixel
+ * 					endif
+ * 				endfor
+ * 			endfor
+ * 
+ * 			Using the above algorithm,
+ * 				pop =
+ * 					0	0	0	0	0	0	0	0	0	0
+ * 					0	0	0	0	0	0	0	0	0	0
+ * 					0	0	X	X	X	X	X	X	0	0
+ * 					0	0	X	1	1	1	X	2	X	0
+ * 					0	0	X	1	X	X	X	2	X	0
+ * 					0	0	X	1	X	2	2	2	X	0
+ * 					0	0	X	X	X	X	X	X	X	0
+ * 					0	0	X	3	3	3	3	3	X	0
+ * 					0	0	0	X	X	X	X	X	X	0
+ * 					0	0	0	0	0	0	0	0	0	0
+ */
+
+/*
+ * codeImage.
+ *
+ * 	Let m be the input ImageMatrix:
+ * 		m = 
+ * 			*	*	*	*	*	*	*	*	*	*
+ *			*	*	*	*	*	*	*	*	*	*
+ *			*	*	#	#	#	#	#	#	*	*
+ *			*	*	#	@	@	@	#	$	#	*
+ *			*	*	#	@	#	#	#	$	#	*
+ *			*	*	#	@	#	$	$	$	#	*
+ *			*	*	#	#	#	#	#	#	#	*
+ *			*	*	#	%	%	%	%	%	#	*
+ *			*	*	*	#	#	#	#	#	#	*
+ *			*	*	*	*	*	*	*	*	*	*
+ *
+ *	Let mat be the matrix that stores the code corresponding to each pixel.
+ *	Note that: intially mat[i][j] = -1 for all i and j.
+ *
+ *	A high level overview of algorithm: Assuming ZERO INDEXED rows and cols
+ *		counter = 0;
+ *		for i = 0 to last row
+ *			for j = 0 to last row
+ *				if((i,j) is not yet coded)
+ *					code pixel(i,j) with counter i.e. mat[i][j] = counter 
+ *					Q be an empty queue.
+ *					push pixel(i, j) in Q.
+ *					while(Q is not empty)
+ *						x = Q.pop().
+ *						assign all pixels adjacent to x that are equal to x, the same code i.e. counter and push them in queue Q
+ *					endwhile
+ *					increment counter by 1.
+ *				endif
+ *			endfor
+ *		endfor
+ *
+ *	For the particular m that we chose, the number of times the routine enters into if statement is 5.
+ *	After it comes out 1st time:
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	#	#	#	#	#	#	0	0
+ *		0	0	#	@	@	@	#	$	#	0
+ *		0	0	#	@	#	#	#	$	#	0
+ *		0	0	#	@	#	$	$	$	#	0
+ *		0	0	#	#	#	#	#	#	#	0
+ *		0	0	#	%	%	%	%	%	#	0
+ *		0	0	0	#	#	#	#	#	#	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *
+ *	After it comes out 2nd time:
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	1	1	1	1	1	1	0	0
+ *		0	0	1	@	@	@	1	$	1	0
+ *		0	0	1	@	1	1	1	$	1	0
+ *		0	0	1	@	1	$	$	$	1	0
+ *		0	0	1	1	1	1	1	1	1	0
+ *		0	0	1	%	%	%	%	%	1	0
+ *		0	0	0	1	1	1	1	1	1	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *
+ *	After it comes out 3rd time:
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	1	1	1	1	1	1	0	0
+ *		0	0	1	2	2	2	1	$	1	0
+ *		0	0	1	2	1	1	1	$	1	0
+ *		0	0	1	2	1	$	$	$	1	0
+ *		0	0	1	1	1	1	1	1	1	0
+ *		0	0	1	%	%	%	%	%	1	0
+ *		0	0	0	1	1	1	1	1	1	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *
+ *	After it comes out 4th time:
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	1	1	1	1	1	1	0	0
+ *		0	0	1	2	2	2	1	3	1	0
+ *		0	0	1	2	1	1	1	3	1	0
+ *		0	0	1	2	1	3	3	3	1	0
+ *		0	0	1	1	1	1	1	1	1	0
+ *		0	0	1	%	%	%	%	%	1	0
+ *		0	0	0	1	1	1	1	1	1	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *
+ *	After it comes out 5th time:
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *		0	0	1	1	1	1	1	1	0	0
+ *		0	0	1	2	2	2	1	3	1	0
+ *		0	0	1	2	1	1	1	3	1	0
+ *		0	0	1	2	1	3	3	3	1	0
+ *		0	0	1	1	1	1	1	1	1	0
+ *		0	0	1	3	3	3	3	3	1	0
+ *		0	0	0	1	1	1	1	1	1	0
+ *		0	0	0	0	0	0	0	0	0	0
+ *
+ */
+/*
+ *  dissolveRegion.
+ *  It dissolves a region in its surrounding regions.
+ *  A high level overview of the algorithm:
+ *  	Suppose rgn be the region that needs to be dissolved/merged.
+ *  		while(rgn contains a pixel i.e. it is not empty)
+ *  			iterate over all the pixels of the region
+ *  				let boundElem and boundCount be two empty vectors.
+ *					iterate over all surrounding pixels of this pixel
+ *  					if(this surrounding pixel has a different code than this pixel)
+ *  						if(this different code pixel found is already in boundElem)
+ *  							increase boundCount corresponding to this different pixel
+ *  						else
+ *  							push this different pixel in boundElem 
+ *								and initialize boundCount corresponding to this different pixel with 1
+ *  						endif
+ *  					endif
+ *					enditerate
+ *  			enditerate
+ *  			if(boundElem is not empty)
+ *  				//This means that this pixel is a boundary pixel
+ *  				find the boundElem which has highest boundCount and assign it's code to this pixel.
+ *  				push this pixel's coordinate to the region which is assigned to this pixel.
+ *					Also, erase this pixel from rgn.
+ *  			endif
+ *  		endwhile
+ *
+ */
+
+/*
+ * 	formLineSegments and MoveToNode
+ *
+ * 	It forms line segments from control point to control point and island line segments too.
+ * 	Pass = 1 forms linesegments
+ * 	Pass = 2 forms islandLineSegments
+ *	Note: Before forming line segments, "dangerous connections" surrounding dangerous points must be removed.
+ *
+ *	Dangerous points/pixels: those non boundary pixels which have boundary pixels at UP, DOWN, LEFT, RIGHT.
+ *	Dangerous connections:
+ *		Let x be a dangerous point. 
+ *		If, in popped out boundary bitmap, x->UPLEFT and x->DOWNRIGHT have same
+ *		rgb value as x then connection between UP and LEFT & DOWN and RIGHT are dangerous.
+ *		Else if, in popped out boundary bitmap, x->UPRIGHT and x->DOWNLEFT have same
+ *		rgb value as x then connection between UP and RIGHT & DOWN and LEFT are dangerous.
+ *		Following are the pictorial reresentation of above two cases:
+ *			x 	B 	?			? 	B 	x
+ *			B 	x 	B 			B 	x 	B
+ *			? 	B 	x 			x 	B 	?
+ *	
+ *	A high level view of the algorithm.
+ *
+ * 	pass 1: forms line segments from control point to control point.
+ * 		start from a control point(X) and initialize an empty "path" variable
+ * 		move away via adjacencly list represnetation of graph and a visited node/vertex bookkeeping
+ * 		once you touch another control point OR (same control point with length of path > some FIXED CONSTANT)
+ * 			push all the visited nodes/vertices from the starting cp to this cp to the "path"
+ * 			push this "path" in a vector of lineSeg
+ * 		repeat from step 2 with the same starting control point(X) but different adjacent node/vertex which is not yet visited
+ * 		repeat the above steps until all control points are exhausted
+ *
+ * 		Now, you have a vector of lineSeg which contains all line segments from cp to cp.
+ *
+ * 	pass 2: forms island line segments from an unused node/vertex to itself
+ * 		start from an unsed node/vertex and initialize an empty "path" variable
+ * 		move away via adjacencly list represnetation of graph and a visited node/vertex bookkeeping
+ * 		once you touch the same starting node/vertex
+ * 			push all the visited nodes/vertices from starting pt to itself to the "path"
+ * 			push this "path" in a vector of islandLineSeg
+ * 		repeat from step 2 with the same starting point(X) but different adjacent node/vertex which is not yet visited(rarely happens)
+ * 		repeat the above steps until all vertices/nodes are used up
+ *
+ * 		Now, you have a vector of islandLineSeg which contains all line segments from a non control point to itself.
+ */

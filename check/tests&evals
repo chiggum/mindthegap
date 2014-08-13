@@ -1,0 +1,38 @@
+Following are some tests and evaluaions defined:
+
+TEST1 = READ png image, print height, print width, print all pixels int values in 
+		test_1_cpp.txt by cpp program.
+	  = READ png image, print height, print width, print all pixels int values in 
+	  	test_1_m.m by octave/matlab script.
+
+TEST2 = print height, width and pixel values of popped out boundaries in different 
+		different lines in test_2_cpp.txt by cpp program.
+	  = print height, width and pixel values of popped out boundaries in different 
+		different lines in test_2_m.txt by octave/matlab program.
+
+TEST3 = convert back the coded image matrix back to the original popped out boundaries image
+		using colour code and check if the two results are same.
+		test_3_cpp.txt will be used for this
+
+TEST4 = print control points coordinates in test_4_cpp.txt and compare with the control points detected
+		by octave/matlab script printed in test_4_m.txt
+
+TEST5 = prtint all lines in this pattern:
+		totalLine = lineSeg + islandLineSeg
+		number of vertices in each line with all the vertices coordinated printed.
+
+TEST6 = print all curves coordinates in this pattern:
+		number of curves
+		forloop
+			no. of pts in ith curve
+			its start 
+			its end
+			all the points
+
+TEST7 = print all regions' adjacent paths number only.
+
+EVAL1 = popout boundaries image
+EVAL2 = Detected Control Points image
+EVAL3_lineSeg_afterprocess = Line segments after preprocessing (Black Pixels)
+EVAL3_lineSeg_beforeprocess = Line segments before preprocessing (Black Pixels)
+EVAL4 = output svg of dijoint paths only to see whether all lines are connected through control points without any gap
