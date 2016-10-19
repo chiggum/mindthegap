@@ -18,11 +18,11 @@ A comparison between currenlty most popular open source tracing software, AutoTr
 
 Usage
 -------
-- For Linux: `make -f makefile`. The binary will be generated in `bin` directory.
-- For windows: Directly use exe file in `exe` directory.
+- **For Linux**: `make -f makefile`. The binary will be generated in `bin` directory.
+- **For windows**: Directly use exe file in `exe` directory.
 
 Use `mindthegap -h`, for further help.
 
-Note
+**Note**
 -----
 If the input image is such that different regions of the image can have multiple shades of same color then use the noisy switch by `-z`.
