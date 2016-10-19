@@ -12,9 +12,11 @@ Comparison
 ------------
 A comparison between currenlty most popular open source tracing software, AutoTrace and our tracing software, mindthegap. **Right click and open in new tab/window to see the difference in outputs of two tracing softwares**.
 
-<img src="https://chiggum.github.io/mindthegap/docs/atlas_219.png" alt="Input bitmap image" width="100" height="200"/>
-<img src="https://chiggum.github.io/mindthegap/docs/output.svg" alt="Autotrace output" width="100" height="200"/>
-<img src="https://chiggum.github.io/mindthegap/docs/mindthegap.svg" alt="mindthegap output" width="100" height="200"/>
+**Captions of figures below**: *Input png, Autotrace output, mindthegap output*.
+
+<img src="https://chiggum.github.io/mindthegap/docs/atlas_219.png" alt="Input bitmap image" width="200" height="400"/>
+<img src="https://chiggum.github.io/mindthegap/docs/output.svg" alt="Autotrace output" width="200" height="400"/>
+<img src="https://chiggum.github.io/mindthegap/docs/mindthegap.svg" alt="mindthegap output" width="200" height="400"/>
 
 Usage
 -------
