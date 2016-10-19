@@ -1,24 +1,29 @@
 mindthegap
------------------------------------------
+=============
 
-An open source tracing software made as a part of the Google Summer of Code 2014 project: Real-time-vectorization-of-brain-atlases for International Neuroinformatics Coordinating Facility, mentored by Dr.Rembrandt Bakker and Dr.Piotr Majka.
+mindthegap is an opensource tracing software developed as a part of a project in **Google Summer of Code 2014**. It vectorizes bitmaps (currenlty supports png only) without introducing gaps or overlaps between adjacent areas.
 
-Link to original repo: https://github.com/chiggum/Vectorization-of-brain-atlases
+- Authors: Dhruv Kohli, Dr. Rembrandt Bakker, Dr. Piotr Majka
+- Mentoring Organization: International Neuroinformatics Coordinating Facility
+- [Link](https://github.com/chiggum/Vectorization-of-brain-atlases) to GSoC'14 project: Real-time Vectorization of brain atlases
 
-mindthegap as the name suggests, vectorize bitmaps without introducing gaps or overlaps between adjacent areas.
+Comparison
+------------
+A comparison between currenlty most popular open source tracing software, AutoTrace and our tracing software, mindthegap.
 
+![alt text](./doc/atlas_219.png "Input bitmap image")
+![alt text](./doc/output.svg "Autotrace output")
+![alt text](./doc/mindthegap.svg "mindthegap output")
+
+
+Usage
+-------
 **How to use**
+- For Linux: `make -f makefile`. The binary will be generated in `bin` directory.
+- For windows: Directly use exe file in `exe` directory.
 
-For Linux
-2 simple steps:
-- chmod +x path/to/install.sh
-- /path/to/install.sh
+Use `mindthegap -h`, for further help.
 
-That's it! Now just write in terminal: mindthegap -h
-The above command will show you how to use the software.
-
-For Windows
-- open cmd
-- go to the directory contatining mindthegap.exe
-- type: mindthegap.exe -h
-- The above command will show you how to use the software.
+Note
+-----
+If the input image is such that different regions of the image can have multiple shades of same color then use the noisy switch by `-z`.
