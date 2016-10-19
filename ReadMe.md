@@ -11,9 +11,9 @@ Comparison
 ------------
 A comparison between currenlty most popular open source tracing software, AutoTrace and our tracing software, mindthegap.
 
-![alt text](doc/atlas_219.png "Input bitmap image")
-![alt text](doc/output.svg "Autotrace output")
-![alt text](doc/mindthegap.svg "mindthegap output")
+![Input bitmap image](https://chiggum.github.io/mindthegap/doc/atlas_219.png "Input bitmap image")
+![Autotrace output](https://chiggum.github.io/mindthegap/doc/output.svg "Autotrace output")
+![mindthegap output](https://chiggum.github.io/mindthegap/doc/mindthegap.svg "mindthegap output")
 
 
 Usage
