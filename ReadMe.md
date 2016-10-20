@@ -31,11 +31,11 @@ If the input image is such that different regions of the image can have multiple
 
 Components of overall algorithm
 ---------------------------
-- Popping out boundaries between different colored regions (refer `docs/documentation.txt`)
+- Popping out boundaries between different colored regions (refer `docs/documentation.pdf`)
 - Search Algorithm (DFS)
 - Connected Component Labelling
-- Dangerous connections removal (refer `docs/documentation.txt`)
-- Dissolving regions (refer `docs/documentation.txt`)
+- Dangerous connections removal (refer `docs/documentation.pdf`)
+- Dissolving regions (refer `docs/documentation.pdf`)
 - Bezier curve fitting over digitized curves **[1]**
 - Posterization and Median Blurring (noisy switch)
 
