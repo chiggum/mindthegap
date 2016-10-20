@@ -79,6 +79,27 @@
 </h2>
 
 <p>If the input image is such that different regions of the image can have multiple shades of same color then use the noisy switch by <code>-z</code>.</p>
+
+<h2>
+<a id="components-of-overall-algorithm" class="anchor" href="#components-of-overall-algorithm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Components of overall algorithm</h2>
+
+<ul>
+<li>Popping out boundaries between different colored regions (refer <code>docs/documentation.pdf</code>)</li>
+<li>Search Algorithm (DFS)</li>
+<li>Connected Component Labelling</li>
+<li>Dangerous connections removal (refer <code>docs/documentation.pdf</code>)</li>
+<li>Dissolving regions (refer <code>docs/documentation.pdf</code>)</li>
+<li>Bezier curve fitting over digitized curves <strong>[1]</strong>
+</li>
+<li>Posterization and Median Blurring (noisy switch)</li>
+</ul>
+
+<h2>
+<a id="references" class="anchor" href="#references" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>References</h2>
+
+<ol>
+<li>Philip J. Schneider. “<strong>An Algorithm for Automatically Fitting Digitized Curves</strong>”. In Graphics Gems, Academic Press, 1990, pp. 612–626.</li>
+</ol>
       </section>
     </div>
 
