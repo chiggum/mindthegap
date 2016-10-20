@@ -28,3 +28,17 @@ Use `mindthegap -h`, for further help.
 **Note**
 -----
 If the input image is such that different regions of the image can have multiple shades of same color then use the noisy switch by `-z`.
+
+Components of overall algorithm
+---------------------------
+- Popping out boundaries between different colored regions (refer `docs/documentation.txt`)
+- Search Algorithm (DFS)
+- Connected Component Labelling
+- Dangerous connections removal (refer `docs/documentation.txt`)
+- Dissolving regions (refer `docs/documentation.txt`)
+- Bezier curve fitting over digitized curves **[1]**
+- Posterization and Median Blurring (noisy switch)
+
+References
+-----------
+1. Philip J. Schneider. “**An Algorithm for Automatically Fitting Digitized Curves**”. In Graphics Gems, Academic Press, 1990, pp. 612–626.
