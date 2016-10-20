@@ -31,11 +31,11 @@ If the input image is such that different regions of the image can have multiple
 
 Components of overall algorithm
 ---------------------------
-- Popping out boundaries between different colored regions (refer `docs/documentation.pdf`)
+- Popping out boundaries between different colored regions (refer [documentation](https://chiggum.github.io/mindthegap/docs/documentation.pdf))
 - Search Algorithm (DFS)
 - Connected Component Labelling
-- Dangerous connections removal (refer `docs/documentation.pdf`)
-- Dissolving regions (refer `docs/documentation.pdf`)
+- Dangerous connections removal (refer [documentation](https://chiggum.github.io/mindthegap/docs/documentation.pdf))
+- Dissolving regions (refer [documentation](https://chiggum.github.io/mindthegap/docs/documentation.pdf))
 - Bezier curve fitting over digitized curves **[1]**
 - Posterization and Median Blurring (noisy switch)
 
