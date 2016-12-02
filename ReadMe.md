@@ -46,12 +46,12 @@ A comparison between currenlty most popular open source tracing software, AutoTr
 
 Input Bitmap:
 
-<img src="https://chiggum.github.io/mindthegap/docs/atlas_219.png" alt="Input bitmap image" width="300" height="600"/>
+<img src="https://chiggum.github.io/mindthegap/docs/atlas_219.png" alt="Input bitmap image" width="400" height="600"/>
 
 AutoTrace SVG:
 
-<img src="https://chiggum.github.io/mindthegap/docs/output.svg" alt="Autotrace output" width="300" height="600"/>
+<img src="https://chiggum.github.io/mindthegap/docs/output.svg" alt="Autotrace output" width="400" height="600"/>
 
 mindthegap SVG:
 
-<img src="https://chiggum.github.io/mindthegap/docs/mindthegap.svg" alt="mindthegap output" width="300" height="600"/>
+<img src="https://chiggum.github.io/mindthegap/docs/mindthegap.svg" alt="mindthegap output" width="400" height="600"/>
