@@ -46,7 +46,7 @@ A comparison between currenlty most popular open source tracing software, AutoTr
 
 Input Bitmap:
 
-<img src="https://chiggum.github.io/mindthegap/docs/atlas_219.png" alt="Input bitmap image" width="400" height="600"/>
+<img src="https://chiggum.github.io/mindthegap/docs/atlas_219.png" alt="Input bitmap image" width="300" height="600"/>
 
 AutoTrace SVG:
 
