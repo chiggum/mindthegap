@@ -10,13 +10,8 @@ mindthegap is an opensource tracing software developed as a part of a project in
 
 Comparison
 ------------
-A comparison between currenlty most popular open source tracing software, AutoTrace and our tracing software, mindthegap. **Right click and open in new tab/window to see the difference in outputs of two tracing softwares**.
 
-**Captions of figures below**: *Input png, Autotrace output, mindthegap output*.
-
-<img src="https://chiggum.github.io/mindthegap/docs/atlas_219.png" alt="Input bitmap image" width="200" height="400"/>
-<img src="https://chiggum.github.io/mindthegap/docs/output.svg" alt="Autotrace output" width="200" height="400"/>
-<img src="https://chiggum.github.io/mindthegap/docs/mindthegap.svg" alt="mindthegap output" width="200" height="400"/>
+**To the bottom of the page**
 
 Usage
 -------
@@ -42,3 +37,21 @@ Components of overall algorithm
 References
 -----------
 1. Philip J. Schneider. “**An Algorithm for Automatically Fitting Digitized Curves**”. In Graphics Gems, Academic Press, 1990, pp. 612–626.
+
+
+Comparsion
+-----------
+A comparison between currenlty most popular open source tracing software, AutoTrace and our tracing software, mindthegap.
+
+
+Input Bitmap:
+
+<img src="https://chiggum.github.io/mindthegap/docs/atlas_219.png" alt="Input bitmap image" width="300" height="600"/>
+
+AutoTrace SVG:
+
+<img src="https://chiggum.github.io/mindthegap/docs/output.svg" alt="Autotrace output" width="300" height="600"/>
+
+mindthegap SVG:
+
+<img src="https://chiggum.github.io/mindthegap/docs/mindthegap.svg" alt="mindthegap output" width="300" height="600"/>
