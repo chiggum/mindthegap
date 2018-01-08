@@ -3,7 +3,7 @@
 
 mindthegap is an opensource tracing software developed as a part of a project in **Google Summer of Code 2014**. It vectorizes bitmaps (currenlty supports png only) without introducing gaps or overlaps between adjacent areas.
 
-- **Authors**: *Dhruv Kohli*, *Dr. Rembrandt Bakker*, *Dr. Piotr Majka*
+- **Authors**: *Dr. Rembrandt Bakker*, *Dr. Piotr Majka* and me.
 - **Mentoring Organization**: *International Neuroinformatics Coordinating Facility*
 - [Link](https://github.com/chiggum/Vectorization-of-brain-atlases) to **GSoC'14 project**: *Real-time Vectorization of brain atlases*
 - [Link](https://scalablebrainatlas.incf.org/macaque/DB09) to a **Scalable Brain Atlas Template** where this tracing software is used.
