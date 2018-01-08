@@ -1,0 +1,8 @@
+title: Mindthegap
+description: Vectorize bitmaps without introducing gaps or overlaps between adjacent regions
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-slate
+
+gems:
+  - jekyll-mentions
